@@ -1,0 +1,23 @@
+{
+  "name": "sourcejs-smiles",
+  "version": "0.0.0",
+  "description": "Smiles support for SourceJS",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sourcejs/sourcejs-smiles.git"
+  },
+  "keywords": [
+    "sourcejs",
+    "smiles"
+  ],
+  "author": "Alexey Ostrovsky",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sourcejs/sourcejs-smiles/issues"
+  },
+  "homepage": "https://github.com/sourcejs/sourcejs-smiles",
+  "dependencies": {
+    "util": "^0.10.3"
+  }
+}
