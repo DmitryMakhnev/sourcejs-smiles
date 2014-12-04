@@ -8,7 +8,9 @@ var util = require('util');
  * @param {function} next - The callback function
  * */
 exports.process = function (req, res, next) {
-    if (req.specData && req.specData.renderedHtml) {
+    if ((global.opts.assets.pluginsOptions.smiles.ignoreURLs.indexOf(req.path) !== -1)
+        && req.specData
+        && req.specData.renderedHtml) {
         var html = req.specData.renderedHtml;
 
         /* some manipulations */
