@@ -1,20 +1,24 @@
 var util = require('util');
 
+var options = options;
+
 /*
- * Получаем html из реквеста и заменяем смайлики на соответствующие картинки
+ * Get pre-final HTML from request, and replace smiles to images
  *
  * @param {object} req - Request object
  * @param {object} res - Response object
  * @param {function} next - The callback function
  * */
 exports.process = function (req, res, next) {
-    if ((global.opts.assets.pluginsOptions.smiles.ignoreURLs.indexOf(req.path) !== -1)
+    if (
+        !(options && options.ignoreURLs.indexOf(req.path) >= 0)
         && req.specData
-        && req.specData.renderedHtml) {
+        && req.specData.renderedHtml
+        ) {
         var html = req.specData.renderedHtml;
 
         /* some manipulations */
-        var smileTpl = "<img src='/source/assets/i/smiles/%s.png' alt='%s' />";
+        var smileTpl = "<img src='/node_modules/sourcejs-smiles/assets/i/smiles/%s.png' alt='%s' />";
 
         html = html.replace(/\:\)/g, util.format(smileTpl, "1f600", ":)"));
         html = html.replace(/\:D/g, util.format(smileTpl, "1f602", ":D"));
