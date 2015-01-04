@@ -1,7 +1,7 @@
 Smiles support for SourceJS
 ===============
 
-SourceJS middleware to replace `:)` to emoticon smiles ![image](https://raw.githubusercontent.com/sourcejs/sourcejs-smiles/master/assets/i/smiles/1f600.png).
+[SourceJS](http://sourcejs.com) middleware to replace `:)` to emoticon smiles ![image](https://raw.githubusercontent.com/sourcejs/sourcejs-smiles/master/assets/i/smiles/1f600.png).
 
 ## Install
 
