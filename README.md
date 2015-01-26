@@ -12,3 +12,19 @@ npm install sourcejs-smiles --save
 ```
 
 Then restart your SourceJS application, middleware will be loaded automatically.
+
+
+## Settings
+
+### ignoreURLs
+
+To not processing page by plugin, add page url in `sourcejs/user/options.js` to `assets.pluginsOptions` as:
+
+```
+smiles: {
+    ignoreURLs: [
+        '/url/to/your/page1',
+        '/url/to/your/page2'
+    ]
+}
+```
