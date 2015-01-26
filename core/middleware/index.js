@@ -1,7 +1,6 @@
 var util = require('util');
 
 var options = opts;
-var logger = log;
 
 /**
  * get object value safely
@@ -41,13 +40,13 @@ function getValueByObjectKeys(object, key){
         }
     }
     return null;
-};
+}
 
 
 /**
  *
  * @param {Object} request Express request object
- * @return {}
+ * @return {Boolean}
  */
 function isNotIgnoreFile (request) {
     var ignoreURLs = getValueByObjectKeys(
@@ -75,7 +74,6 @@ function isNotIgnoreFile (request) {
  */
 function isNeedProcessing(request) {
     var specData = request.specData;
-    logger.info({isIgnore: isNotIgnoreFile(request), path: request.path});
     return isNotIgnoreFile(request)
         && specData
         && specData.renderedHtml;
