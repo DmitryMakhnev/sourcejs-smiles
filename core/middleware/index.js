@@ -9,13 +9,13 @@ var options = opts;
  * @returns {*} result || null
  */
 function getValueByObjectKeys(object, key){
-    var keyTypeof = typeof key,
-        i,
-        iMax,
-        keysList,
-        cache,
-        result,
-        u;
+    var keyTypeof = typeof key;
+    var i;
+    var iMax;
+    var keysList;
+    var cache;
+    var result;
+    var u;
     if (object){
         if ((keyTypeof !== 'string')
             && (keyTypeof !== 'number')){
