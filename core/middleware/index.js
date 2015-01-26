@@ -5,7 +5,7 @@ var options = opts;
 /**
  * get object value safely
  * @param {Object|Null|undefined} object
- * @param {String|Number|Array} [key] object proterties keys
+ * @param {String|Number|Array} [key] object properties keys
  * @returns {*} result || null
  */
 function getValueByObjectKeys(object, key){

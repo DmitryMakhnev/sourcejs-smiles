@@ -1,6 +1,6 @@
 {
   "name": "sourcejs-smiles",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Smiles support for SourceJS",
   "main": "index.js",
   "repository": {
