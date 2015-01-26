@@ -1,6 +1,83 @@
 var util = require('util');
 
-var options = options;
+var options = opts;
+
+/**
+ * get object value safely
+ * @param {Object|Null|undefined} object
+ * @param {String|Number|Array} [key] object proterties keys
+ * @returns {*} result || null
+ */
+function getValueByObjectKeys(object, key){
+    var keyTypeof = typeof key;
+    var i;
+    var iMax;
+    var keysList;
+    var cache;
+    var result;
+    var u;
+    if (object){
+        if ((keyTypeof !== 'string')
+            && (keyTypeof !== 'number')){
+            keysList = key;
+            i = 0;
+        } else{
+            keysList = arguments;
+            i = 1;
+        }
+        iMax = keysList.length - 1;
+        for (; i < iMax; i += 1){
+            cache = object[keysList[i]];
+            if (cache === u){
+                return null;
+            } else{
+                object = cache;
+            }
+        }
+        result = object[keysList[i]];
+        if (result !== u){
+            return result;
+        }
+    }
+    return null;
+}
+
+
+/**
+ *
+ * @param {Object} request Express request object
+ * @return {Boolean}
+ */
+function isNotIgnoreFile (request) {
+    var ignoreURLs = getValueByObjectKeys(
+            options,
+            'assets',
+            'pluginsOptions',
+            'smiles',
+            'ignoreURLs'
+        );
+
+    var path = request.path;
+    var index = path.indexOf('/index.src');
+    if (index !== -1) {
+        path = path.substr(0, index + 1);
+    }
+
+    return !(ignoreURLs
+            && (ignoreURLs.indexOf(path) !== -1));
+}
+
+/**
+ *
+ * @param {Object} request Express request object
+ * @return {Boolean}
+ */
+function isNeedProcessing(request) {
+    var specData = request.specData;
+    return isNotIgnoreFile(request)
+        && specData
+        && specData.renderedHtml;
+}
 
 /*
  * Get pre-final HTML from request, and replace smiles to images
@@ -10,11 +87,8 @@ var options = options;
  * @param {function} next - The callback function
  * */
 exports.process = function (req, res, next) {
-    if (
-        !(options && options.ignoreURLs.indexOf(req.path) >= 0)
-        && req.specData
-        && req.specData.renderedHtml
-        ) {
+
+    if (isNeedProcessing(req)) {
         var html = req.specData.renderedHtml;
 
         /* some manipulations */
