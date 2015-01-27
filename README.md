@@ -18,7 +18,7 @@ Then restart your SourceJS application, middleware will be loaded automatically.
 
 ### ignoreURLs
 
-To not processing page by plugin, add page url in `sourcejs/user/options.js` to `assets.pluginsOptions` as:
+Add list of ignored urls to skip processing in `sourcejs/user/options.js` to `assets.pluginsOptions`:
 
 ```
 smiles: {
